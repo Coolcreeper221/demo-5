@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://chao4ab58tf7v"]
+
+[ext_resource type="Theme" uid="uid://cv25m2ymwf3xu" path="res://Assets/Theme.tres" id="1_6mqwn"]
+[ext_resource type="Texture2D" uid="uid://4ma4q744evk" path="res://Assets/dawnbringer-32-8x.png" id="1_h05x7"]
+[ext_resource type="Script" path="res://Scenes/map_selector.gd" id="1_rdgyd"]
+
+[node name="Map selector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6mqwn")
+script = ExtResource("1_rdgyd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.132813, 0.125, 0.203125, 1)
+
+[node name="Dawnbringer-32-8x" type="Sprite2D" parent="."]
+position = Vector2(217, 307)
+texture = ExtResource("1_h05x7")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 65.0
+offset_right = 21.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 42
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 33)
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.111
+offset_bottom = 1.032
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="Exit" type="Button" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Exit
+"
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+color = Color(0.132813, 0.125, 0.203125, 1)
+
+[node name="current" type="Label" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Current: aaaaaaaa"
+
+[node name="ColorRect2" type="ColorRect" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(143, 0)
+layout_mode = 2
+color = Color(0.132813, 0.125, 0.203125, 1)
+
+[node name="Save" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Create"
+
+[connection signal="pressed" from="Control/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Save" to="." method="_on_create_pressed"]

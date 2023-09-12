@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://8hxyyna6bdv6"]
+
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_udd3l"]
+[ext_resource type="Texture2D" uid="uid://bilg8l8egju2y" path="res://Assets/Guns/bullet.png" id="2_4n23y"]
+[ext_resource type="Texture2D" uid="uid://4ma4q744evk" path="res://Assets/dawnbringer-32-8x.png" id="4_kyti3"]
+
+[sub_resource type="Shader" id="Shader_4bch7"]
+code = "shader_type canvas_item;
+uniform vec4 Original:source_color;
+uniform vec4 Replace:source_color;
+void fragment() {
+	if (distance(texture(TEXTURE,UV),Original)<= 0.1){
+		COLOR = Replace;
+	}
+	else{
+		COLOR =texture(TEXTURE,UV);
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qg7ub"]
+resource_local_to_scene = true
+shader = SubResource("Shader_4bch7")
+shader_parameter/Original = Color(1, 1, 1, 1)
+shader_parameter/Replace = Color(0.371094, 0.800781, 0.890625, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5mtv"]
+radius = 2.23607
+
+[node name="Bullet" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("1_udd3l")
+colors = Array[Color]([Color(0.996078, 0.996078, 0.996078, 1), Color(0.847656, 0.339844, 0.386719, 1), Color(0.371094, 0.800781, 0.890625, 1), Color(0.597656, 0.894531, 0.3125, 1), Color(0.515625, 0.492188, 0.527344, 1), Color(0.839844, 0.480469, 0.726563, 1)])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qg7ub")
+texture = ExtResource("2_4n23y")
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_g5mtv")
+
+[node name="Dawnbringer-32-8x" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-6, 16)
+texture = ExtResource("4_kyti3")

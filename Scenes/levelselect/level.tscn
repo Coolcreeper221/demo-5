@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ho5dras0dig8"]
+
+[ext_resource type="Script" path="res://Scripts/levelselectlevel.gd" id="1_78adu"]
+[ext_resource type="Theme" uid="uid://cv25m2ymwf3xu" path="res://Assets/Theme.tres" id="1_ai0df"]
+[ext_resource type="Texture2D" uid="uid://kva2iyqvsweu" path="res://Scenes/levelselect/base.png" id="3_se8gn"]
+
+[node name="Control" type="Button"]
+custom_minimum_size = Vector2(128, 64)
+offset_right = 128.0
+offset_bottom = 64.0
+theme = ExtResource("1_ai0df")
+flat = true
+script = ExtResource("1_78adu")
+level_name = "abcd"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_se8gn")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 128.0
+offset_bottom = 64.0
+text = "abcd"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

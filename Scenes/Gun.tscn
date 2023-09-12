@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bularxoxaphyq"]
+
+[ext_resource type="Script" path="res://Scripts/Gun.gd" id="1_qhn4q"]
+[ext_resource type="Texture2D" uid="uid://c2x3q8rr0blhw" path="res://Assets/Guns/16-sheet.png" id="2_j1dmd"]
+[ext_resource type="Texture2D" uid="uid://3nlsn618ih73" path="res://Assets/Player/hands.png" id="3_omajg"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_qhn4q")
+Type = 44
+bullet_Size = 1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(4, -3)
+texture = ExtResource("2_j1dmd")
+hframes = 46
+frame = 44
+region_rect = Rect2(6, 39, 12, 8)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(19, -3)
+
+[node name="Hands" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-5, -9)
+texture = ExtResource("3_omajg")
+centered = false

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Levels" load_steps=2 format=3 uid="uid://d34badot52ebt"]
+
+[ext_resource type="Script" path="res://Resources/Levels.gd" id="1_7vqwk"]
+
+[resource]
+script = ExtResource("1_7vqwk")
+storage_of_levels = {
+"test": [Vector2(0, 0)]
+}

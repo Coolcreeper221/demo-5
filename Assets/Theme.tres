@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cv25m2ymwf3xu"]
+
+[ext_resource type="FontFile" uid="uid://dax7sfjuafktg" path="res://Assets/ThaleahFat.ttf" id="1_lbdrr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k52q0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snq3i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63hlm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmy1p"]
+
+[resource]
+default_font = ExtResource("1_lbdrr")
+default_font_size = 16
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_lbdrr")
+Button/styles/focus = SubResource("StyleBoxEmpty_k52q0")
+Button/styles/hover = SubResource("StyleBoxEmpty_k52q0")
+Button/styles/normal = SubResource("StyleBoxEmpty_k52q0")
+Button/styles/pressed = SubResource("StyleBoxEmpty_k52q0")
+Fonts/fonts/normal = ExtResource("1_lbdrr")
+LineEdit/font_sizes/font_size = 16
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_snq3i")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_63hlm")
+LineEdit/styles/read_only = SubResource("StyleBoxEmpty_xmy1p")

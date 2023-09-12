@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://cinlnuvy80ldq"]
+
+[ext_resource type="Script" path="res://Scripts/Transition.gd" id="1_e2mho"]
+[ext_resource type="Theme" uid="uid://cv25m2ymwf3xu" path="res://Assets/Theme.tres" id="2_hmax8"]
+[ext_resource type="Shader" path="res://Assets/transition.gdshader" id="2_iqmrs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ydqls"]
+shader = ExtResource("2_iqmrs")
+shader_parameter/num_lines = 2.0
+shader_parameter/y_threshold = 0.0
+shader_parameter/line_color_a = Color(1, 1, 1, 1)
+shader_parameter/line_color_b = Color(0, 0, 0, 1)
+
+[node name="Transition" type="Node2D"]
+script = ExtResource("1_e2mho")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+follow_viewport_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("2_hmax8")
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 87.495
+offset_right = 4.0
+offset_bottom = 120.495
+grow_horizontal = 2
+theme = ExtResource("2_hmax8")
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer2"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "
+"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ydqls")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -149.0
+offset_right = 38.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.05767
+pivot_offset = Vector2(293, 293)
+mouse_filter = 2

@@ -1,0 +1,265 @@
+[gd_scene load_steps=13 format=3 uid="uid://bi2xymuvkqsrl"]
+
+[ext_resource type="Texture2D" uid="uid://4ma4q744evk" path="res://Assets/dawnbringer-32-8x.png" id="1_8grim"]
+[ext_resource type="Theme" uid="uid://cv25m2ymwf3xu" path="res://Assets/Theme.tres" id="1_34xd1"]
+[ext_resource type="Script" path="res://Scripts/Playersellect.gd" id="2_gtkuo"]
+[ext_resource type="Texture2D" uid="uid://dkbokc6tyll05" path="res://Assets/Player/AnimationSheet-sheet.png" id="5_byabc"]
+[ext_resource type="Texture2D" uid="uid://c2x3q8rr0blhw" path="res://Assets/Guns/16-sheet.png" id="5_kch2o"]
+[ext_resource type="Texture2D" uid="uid://bog6j1d6jfjfr" path="res://Assets/IconsShadow-16.png" id="5_q34cq"]
+[ext_resource type="AudioStream" uid="uid://bciedf7hbgfdj" path="res://Assets/Leveledit.wav" id="7_pwuh2"]
+[ext_resource type="Script" path="res://Scenes/Random.gd" id="8_emh81"]
+[ext_resource type="AudioStream" uid="uid://g81aypxl3hev" path="res://Assets/Enter.wav" id="9_u1mrk"]
+
+[sub_resource type="Animation" id="Animation_fv615"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:focusscale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_1n3ep"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:focusscale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_stoxc"]
+_data = {
+"RESET": SubResource("Animation_fv615"),
+"new_animation": SubResource("Animation_1n3ep")
+}
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_34xd1")
+script = ExtResource("2_gtkuo")
+metadata/_edit_horizontal_guides_ = [110.0]
+metadata/_edit_vertical_guides_ = [126.0]
+
+[node name="Dawnbringer-32-8x" type="Sprite2D" parent="."]
+position = Vector2(128, 292)
+texture = ExtResource("1_8grim")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.132813, 0.125, 0.203125, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Left" type="CenterContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Left/VBoxContainer"]
+layout_mode = 2
+
+[node name="LB" type="Button" parent="HBoxContainer/Left/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "<"
+
+[node name="Control" type="Control" parent="HBoxContainer/Left/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="HBoxContainer/Left/VBoxContainer/HBoxContainer/Control"]
+position = Vector2(12, 12)
+texture = ExtResource("5_byabc")
+hframes = 8
+vframes = 6
+region_enabled = true
+region_rect = Rect2(0, 0, 192, 144)
+
+[node name="LF" type="Button" parent="HBoxContainer/Left/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = ">"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Left/VBoxContainer"]
+layout_mode = 2
+
+[node name="GLB" type="Button" parent="HBoxContainer/Left/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "<"
+
+[node name="Control" type="Control" parent="HBoxContainer/Left/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="Gun" type="Sprite2D" parent="HBoxContainer/Left/VBoxContainer/HBoxContainer2/Control"]
+position = Vector2(12, 18)
+texture = ExtResource("5_kch2o")
+hframes = 46
+region_rect = Rect2(0, 0, 192, 144)
+
+[node name="GLF" type="Button" parent="HBoxContainer/Left/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = ">"
+
+[node name="Right" type="CenterContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Right/VBoxContainer"]
+layout_mode = 2
+
+[node name="RB" type="Button" parent="HBoxContainer/Right/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "<"
+
+[node name="Control" type="Control" parent="HBoxContainer/Right/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="HBoxContainer/Right/VBoxContainer/HBoxContainer/Control"]
+position = Vector2(12, 12)
+texture = ExtResource("5_byabc")
+hframes = 8
+vframes = 6
+region_enabled = true
+region_rect = Rect2(0, 0, 192, 144)
+
+[node name="RF" type="Button" parent="HBoxContainer/Right/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = ">"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Right/VBoxContainer"]
+layout_mode = 2
+
+[node name="GRB" type="Button" parent="HBoxContainer/Right/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "<"
+
+[node name="Control" type="Control" parent="HBoxContainer/Right/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="Gun" type="Sprite2D" parent="HBoxContainer/Right/VBoxContainer/HBoxContainer2/Control"]
+position = Vector2(12, 18)
+texture = ExtResource("5_kch2o")
+hframes = 46
+region_rect = Rect2(0, 0, 192, 144)
+
+[node name="GRF" type="Button" parent="HBoxContainer/Right/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = ">"
+
+[node name="Hover" type="Control" parent="."]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Hover"]
+layout_mode = 0
+offset_right = 14.0
+offset_bottom = 14.0
+texture = ExtResource("5_q34cq")
+region_rect = Rect2(96, 0, 16, 16)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hover/NinePatchRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_stoxc")
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(0, 288)
+layout_mode = 2
+alignment = 2
+
+[node name="maps" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+text = "Maps"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+text = "Play"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_pwuh2")
+autoplay = true
+script = ExtResource("8_emh81")
+sequence = true
+List = Array[AudioStream]([ExtResource("9_u1mrk"), ExtResource("7_pwuh2")])
+
+[connection signal="pressed" from="HBoxContainer/Left/VBoxContainer/HBoxContainer/LB" to="." method="_on_lb_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left/VBoxContainer/HBoxContainer/LF" to="." method="_on_lf_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left/VBoxContainer/HBoxContainer2/GLB" to="." method="_on_glb_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left/VBoxContainer/HBoxContainer2/GLF" to="." method="_on_glf_pressed"]
+[connection signal="pressed" from="HBoxContainer/Right/VBoxContainer/HBoxContainer/RB" to="." method="_on_rb_pressed"]
+[connection signal="pressed" from="HBoxContainer/Right/VBoxContainer/HBoxContainer/RF" to="." method="_on_rf_pressed"]
+[connection signal="pressed" from="HBoxContainer/Right/VBoxContainer/HBoxContainer2/GRB" to="." method="_on_grb_pressed"]
+[connection signal="pressed" from="HBoxContainer/Right/VBoxContainer/HBoxContainer2/GRF" to="." method="_on_grf_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/maps" to="." method="_on_maps_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
