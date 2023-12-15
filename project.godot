@@ -24,7 +24,6 @@ Transition="*res://Scenes/Transition.tscn"
 
 window/size/viewport_width=512
 window/size/viewport_height=288
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [gui]

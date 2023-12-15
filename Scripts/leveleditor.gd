@@ -40,6 +40,10 @@ func _on_save_pressed():
 		i.show()
 
 func _on_load_pressed():
+	if $Control/HBoxContainer/LineEdit.text == "" or $Control/HBoxContainer/LineEdit.text.to_lower() == "base":
+		print("no")
+		return false
+		print("bypassed")
 	_load($Control/HBoxContainer/LineEdit.text.to_lower())
 
 
